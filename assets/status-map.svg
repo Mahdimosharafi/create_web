@@ -1,24 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 537 282" role="img" aria-labelledby="title desc">
-<title id="title">وضعیت برق در رامسر</title><desc id="desc">نمایش گرافیکی وضعیت عادی برق در رامسر</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 537 282" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
+<title id="title">نقشه وضعیت برق رامسر</title><desc id="desc">نمایش نقشه و محدوده وضعیت برق رامسر</desc>
 <defs>
- <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#062d62"/><stop offset="1" stop-color="#0b4d91"/></linearGradient>
- <radialGradient id="pulse"><stop offset="0" stop-color="#a8e94d" stop-opacity=".95"/><stop offset=".55" stop-color="#78cf39" stop-opacity=".55"/><stop offset="1" stop-color="#78cf39" stop-opacity="0"/></radialGradient>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#082f63"/><stop offset="1" stop-color="#0b4d91"/></linearGradient>
+ <radialGradient id="pulse"><stop offset="0" stop-color="#a8ef55" stop-opacity=".9"/><stop offset=".52" stop-color="#72d43d" stop-opacity=".38"/><stop offset="1" stop-color="#72d43d" stop-opacity="0"/></radialGradient>
 </defs>
 <rect width="537" height="282" rx="14" fill="url(#bg)"/>
-<g fill="none" stroke="#88a4c4" stroke-opacity=".28" stroke-width="1">
- <circle cx="210" cy="143" r="46"/><circle cx="210" cy="143" r="78"/><circle cx="210" cy="143" r="111"/>
- <path d="M0 130H537M270 0V282"/>
+<g fill="none" stroke="#a7c0dc" stroke-opacity=".24" stroke-width="1">
+ <circle cx="205" cy="142" r="45"/><circle cx="205" cy="142" r="78"/><circle cx="205" cy="142" r="110"/>
+ <path d="M0 142H537M205 0V282"/>
 </g>
-<path d="M22 112l24-15 13-28 22-12 18-21 27 6 26-14 35 12 17 25 39 5 24 28 36 4 29 30 34 4 28 23 39-5 35 22 18-6 12 23-19 17-35 0-27 22-37-4-24 18-39-10-31 18-31-13-29 10-25-17-31 6-24-20-29-7-22-23-26-9-15-25-26-14z" stroke="#a8b6c9" stroke-width="2" fill="none" opacity=".8"/>
-<path d="M174 132c8-12 17-18 28-17 9 0 17 8 25 8 11 1 21-6 27 2 6 9-4 17-2 26 2 11 12 18 4 29-7 10-20 4-30 7-11 3-18 15-30 10-10-4-8-17-15-24-8-8-20-9-18-22 1-8 5-12 11-19z" fill="#79c63b" stroke="#9be54d" stroke-width="1.5"/>
-<circle cx="210" cy="143" r="70" fill="url(#pulse)"/>
-<circle cx="210" cy="143" r="7" fill="#d8ff5d"/><circle cx="210" cy="143" r="3" fill="#fff"/>
-<text x="507" y="49" text-anchor="end" direction="rtl" font-family="Tahoma,Arial,sans-serif" font-size="20" font-weight="700" fill="#fff">وضعیت برق در رامسر</text>
-<circle cx="493" cy="84" r="7" fill="#58c943"/><text x="478" y="90" text-anchor="end" direction="rtl" font-family="Tahoma,Arial,sans-serif" font-size="13" font-weight="700" fill="#b8ef68">وضعیت عادی</text>
-<text x="507" y="143" text-anchor="end" direction="rtl" font-family="Tahoma,Arial,sans-serif" font-size="12" fill="#dce8f6">همه مناطق تحت پوشش</text>
-<text x="507" y="166" text-anchor="end" direction="rtl" font-family="Tahoma,Arial,sans-serif" font-size="12" fill="#dce8f6">دارای برق پایدار هستند.</text>
-<rect x="341" y="193" width="166" height="43" rx="8" fill="#062d62" stroke="#7698bd" stroke-width="1"/>
-<text x="478" y="220" text-anchor="end" direction="rtl" font-family="Tahoma,Arial,sans-serif" font-size="12" font-weight="700" fill="#fff">مشاهده جزئیات مناطق</text>
-<text x="354" y="220" font-family="Arial,sans-serif" font-size="17" fill="#fff">→</text>
-<text x="26" y="255" direction="rtl" font-family="Tahoma,Arial,sans-serif" font-size="9" fill="#aebfd3">آخرین بروزرسانی: امروز - ۱۴:۳۰</text>
+<path d="M22 111l25-15 13-28 22-12 18-21 27 6 26-14 35 12 17 25 39 5 24 28 36 4 29 30 34 4 28 23 39-5 35 22 18-6 12 23-19 17-35 0-27 22-37-4-24 18-39-10-31 18-31-13-29 10-25-17-31 6-24-20-29-7-22-23-26-9-15-25-26-14z" stroke="#aebfd2" stroke-width="2" fill="none" opacity=".85"/>
+<path d="M171 132c8-12 17-18 28-17 9 0 17 8 25 8 11 1 21-6 27 2 6 9-4 17-2 26 2 11 12 18 4 29-7 10-20 4-30 7-11 3-18 15-30 10-10-4-8-17-15-24-8-8-20-9-18-22 1-8 5-12 11-19z" fill="#7bd53b" stroke="#a5ed57" stroke-width="1.5"/>
+<circle cx="205" cy="142" r="73" fill="url(#pulse)"/>
+<circle cx="205" cy="142" r="7" fill="#dcff67"/><circle cx="205" cy="142" r="3" fill="#fff"/>
 </svg>
