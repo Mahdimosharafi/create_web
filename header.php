@@ -5,7 +5,19 @@
 <header class="site-top">
   <div class="container top-inner">
     <div class="brand">
-      <?php echo ramser_energy_logo(); ?>
+      <?php
+      if (has_custom_logo()) {
+          $custom_logo_id = get_theme_mod('custom_logo');
+          $logo_url = wp_get_attachment_image_url($custom_logo_id, 'full');
+          if ($logo_url) {
+              echo '<a class="custom-site-logo" href="' . esc_url(home_url('/')) . '" rel="home" aria-label="' . esc_attr(get_bloginfo('name')) . '"><img src="' . esc_url($logo_url) . '" alt="' . esc_attr(get_bloginfo('name')) . '"></a>';
+          } else {
+              echo ramser_energy_logo();
+          }
+      } else {
+          echo ramser_energy_logo();
+      }
+      ?>
       <div><div class="brand-title"><?php echo esc_html(ramser_energy_get('brand_title')); ?></div><div class="brand-sub"><?php echo esc_html(ramser_energy_get('brand_subtitle')); ?></div></div>
     </div>
     <div class="top-actions">
