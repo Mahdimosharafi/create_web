@@ -3,7 +3,7 @@
 <head><meta charset="<?php bloginfo('charset'); ?>"><meta name="viewport" content="width=device-width, initial-scale=1"><?php wp_head(); ?></head>
 <body <?php body_class(); ?>><?php wp_body_open(); ?>
 <header class="site-top">
-  <div class="container top-inner">
+  <div class="container top-inner header-top-row">
     <div class="brand">
       <?php
       if (has_custom_logo()) {
@@ -20,10 +20,14 @@
       ?>
       <div><div class="brand-title"><?php echo esc_html(ramser_energy_get('brand_title')); ?></div><div class="brand-sub"><?php echo esc_html(ramser_energy_get('brand_subtitle')); ?></div></div>
     </div>
-    <div class="top-actions">
+
+    <form class="header-search" role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
+      <input name="s" value="<?php echo esc_attr(get_search_query()); ?>" placeholder="<?php echo esc_attr(ramser_energy_get('search_placeholder')); ?>" aria-label="جستجو در سایت">
+      <button aria-label="جستجو" type="submit"><span aria-hidden="true">⌕</span></button>
+    </form>
+
+    <div class="top-actions header-contact">
       <span class="phone">☎ <?php echo esc_html(ramser_energy_get('phone')); ?></span>
-      <form class="search" role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>"><input name="s" value="<?php echo get_search_query(); ?>" placeholder="<?php echo esc_attr(ramser_energy_get('search_placeholder')); ?>"><button aria-label="جستجو" type="submit">⌕</button></form>
-      <span>نسخه فارسی</span><span>◉</span><span>EN</span>
     </div>
   </div>
 </header>
