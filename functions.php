@@ -11,7 +11,7 @@ function ramser_energy_setup() {
 add_action('after_setup_theme','ramser_energy_setup');
 
 function ramser_energy_assets() {
-    wp_enqueue_style('ramser-energy-style', get_stylesheet_uri(), [], '2.0.1');
+    wp_enqueue_style('ramser-energy-style', get_stylesheet_uri(), [], '2.0.3');
     wp_enqueue_style('ramser-energy-estedad', 'https://fonts.googleapis.com/css2?family=Estedad:wght@100..900&display=swap', [], null);
 }
 add_action('wp_enqueue_scripts','ramser_energy_assets');
@@ -130,7 +130,25 @@ function ramser_energy_menu(){
     $items=[['صفحه اصلی',home_url('/')],['خدمات مشترکین','#services'],['خاموشی‌ها',home_url('/program-outage/')],['اعلام خرابی',home_url('/report-outage/')],['اخبار و اطلاعیه‌ها',home_url('/news/')],['درباره ما',home_url('/about/')],['تماس با ما',home_url('/contact/')]];
     echo '<ul class="menu">'; foreach($items as $item) echo '<li><a href="'.esc_url($item[1]).'">'.esc_html($item[0]).'</a></li>'; echo '</ul>';
 }
-function ramser_energy_icon($i){$icons=['▣','▤','⚡','◫','⚠','▧']; return $icons[$i-1] ?? '⚡';}
+function ramser_energy_icon($i){
+    $icons=[
+        1=>'service-bill-payment.svg',
+        2=>'service-bill.svg',
+        3=>'service-outage.svg',
+        4=>'service-schedule.svg',
+        5=>'service-connection.svg',
+        6=>'service-tracking.svg'
+    ];
+    $file=$icons[$i] ?? 'service-outage.svg';
+    $src=get_template_directory_uri().'/assets/icons/'.$file;
+    return '<img src="'.esc_url($src).'" alt="" aria-hidden="true" loading="lazy">';
+}
+function ramser_energy_quick_icon($i){
+    $icons=[1=>'quick-support.svg',2=>'quick-online.svg',3=>'quick-reliable.svg',4=>'quick-transparency.svg'];
+    $file=$icons[$i] ?? 'quick-support.svg';
+    $src=get_template_directory_uri().'/assets/icons/'.$file;
+    return '<img src="'.esc_url($src).'" alt="" aria-hidden="true" loading="lazy">';
+}
 function ramser_energy_img($key,$class=''){
     $url=get_theme_mod('re_img_'.$key,'');
     if($url) return '<img class="'.esc_attr($class).'" src="'.esc_url($url).'" alt="">';
