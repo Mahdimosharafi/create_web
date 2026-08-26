@@ -30,8 +30,18 @@
     </form>
 
     <div class="top-actions header-contact">
-      <span class="phone">☎ <?php echo esc_html(ramser_energy_get('phone')); ?></span>
+      <span class="phone">☎ 011-55256008</span>
     </div>
   </div>
 </header>
 <div class="nav-wrap"><div class="container"><nav class="main-nav"><div><?php ramser_energy_menu(); ?></div><a class="header-cta" href="#contact">خدمات غیرحضوری　♙</a></nav></div></div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('a,button').forEach(function(el){
+    if ((el.textContent || '').replace(/\s+/g,' ').trim().includes('گزارش سریع خرابی')) {
+      if (el.tagName.toLowerCase() === 'a') el.href = '<?php echo esc_url(home_url('/report-outage/')); ?>';
+      else el.addEventListener('click', function(){ window.location.href = '<?php echo esc_url(home_url('/report-outage/')); ?>'; });
+    }
+  });
+});
+</script>
