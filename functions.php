@@ -11,7 +11,7 @@ function ramser_energy_setup() {
 add_action('after_setup_theme','ramser_energy_setup');
 
 function ramser_energy_assets() {
-    wp_enqueue_style('ramser-energy-style', get_stylesheet_uri(), [], '2.0.3');
+    wp_enqueue_style('ramser-energy-style', get_stylesheet_uri(), [], '2.0.4');
     wp_enqueue_style('ramser-energy-estedad', 'https://fonts.googleapis.com/css2?family=Estedad:wght@100..900&display=swap', [], null);
 }
 add_action('wp_enqueue_scripts','ramser_energy_assets');
@@ -74,7 +74,6 @@ function ramser_energy_customize_register($wp_customize) {
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'re_hero_image',['label'=>'تصویر پس‌زمینه هدر اصلی','section'=>'re_hero']));
     $wp_customize->add_setting('re_logo_image',['default'=>'','sanitize_callback'=>'esc_url_raw']);
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'re_logo_image',['label'=>'لوگوی سایت','section'=>'re_header']));
-
     $page_sections=[
         'outage'=>['صفحه برنامه خاموشی‌ها',['outage_title','outage_notice','outage_region','outage_date','outage_time','outage_duration','outage_reason','outage_empty']],
         'report'=>['صفحه اعلام خرابی',['report_title','report_intro','report_type','report_address','report_phone','report_description','report_submit','report_map','report_success']],
@@ -93,10 +92,8 @@ function ramser_energy_customize_register($wp_customize) {
             $wp_customize->add_control('re_page_'.$key,['label'=>ramser_energy_label($key),'section'=>$section,'type'=>preg_match('/(intro|text|notice|success|help|result|address)$/',$key)?'textarea':'text']);
         }
     }
-
     $images=[
-        'status_map'=>'تصویر نقشه وضعیت شبکه','education_1_image'=>'تصویر آموزش ۱','education_2_image'=>'تصویر آموزش ۲','education_3_image'=>'تصویر آموزش ۳','featured_image'=>'تصویر خبر اصلی','app_image'=>'تصویر اپلیکیشن',
-        'outage_image'=>'تصویر صفحه خاموشی‌ها','outage_map'=>'نقشه خاموشی‌ها','report_image'=>'تصویر صفحه اعلام خرابی','report_map'=>'نقشه اعلام خرابی','billpay_image'=>'تصویر صفحه پرداخت قبض','bill_image'=>'تصویر صفحه مشاهده قبض','bill_chart'=>'نمودار مصرف قبض','tracking_image'=>'تصویر صفحه پیگیری درخواست','news_page_image'=>'تصویر صفحه اخبار','news_1_image'=>'تصویر خبر ۱','news_2_image'=>'تصویر خبر ۲','news_3_image'=>'تصویر خبر ۳','about_image'=>'تصویر صفحه درباره ما','contact_map'=>'نقشه صفحه تماس با ما'
+        'status_map'=>'تصویر نقشه وضعیت شبکه','education_1_image'=>'تصویر آموزش ۱','education_2_image'=>'تصویر آموزش ۲','education_3_image'=>'تصویر آموزش ۳','featured_image'=>'تصویر خبر اصلی','app_image'=>'تصویر اپلیکیشن','outage_image'=>'تصویر صفحه خاموشی‌ها','outage_map'=>'نقشه خاموشی‌ها','report_image'=>'تصویر صفحه اعلام خرابی','report_map'=>'نقشه اعلام خرابی','billpay_image'=>'تصویر صفحه پرداخت قبض','bill_image'=>'تصویر صفحه مشاهده قبض','bill_chart'=>'نمودار مصرف قبض','tracking_image'=>'تصویر صفحه پیگیری درخواست','news_page_image'=>'تصویر صفحه اخبار','news_1_image'=>'تصویر خبر ۱','news_2_image'=>'تصویر خبر ۲','news_3_image'=>'تصویر خبر ۳','about_image'=>'تصویر صفحه درباره ما','contact_map'=>'نقشه صفحه تماس با ما'
     ];
     $wp_customize->add_section('re_images',['title'=>'تصاویر تمام صفحات','panel'=>'re_panel','description'=>'تصاویر دلخواه را از رسانه وردپرس انتخاب کنید.']);
     foreach($images as $key=>$label){
@@ -116,39 +113,29 @@ function ramser_energy_label($key){
     if(strpos($key,'page_')===0) return 'متن '.$key;
     return 'متن '.$key;
 }
-
 function ramser_energy_logo(){
     $logo=get_theme_mod('re_logo_image');
     if($logo) return '<img src="'.esc_url($logo).'" alt="'.esc_attr(ramser_energy_get('brand_title')).'">';
     return '<div class="logo-fallback">⚡</div>';
 }
 function ramser_energy_menu(){
-    if(has_nav_menu('primary')) {
-        wp_nav_menu(['theme_location'=>'primary','container'=>false,'menu_class'=>'menu']);
-        return;
-    }
+    if(has_nav_menu('primary')) { wp_nav_menu(['theme_location'=>'primary','container'=>false,'menu_class'=>'menu']); return; }
     $items=[['صفحه اصلی',home_url('/')],['خدمات مشترکین','#services'],['خاموشی‌ها',home_url('/program-outage/')],['اعلام خرابی',home_url('/report-outage/')],['اخبار و اطلاعیه‌ها',home_url('/news/')],['درباره ما',home_url('/about/')],['تماس با ما',home_url('/contact/')]];
     echo '<ul class="menu">'; foreach($items as $item) echo '<li><a href="'.esc_url($item[1]).'">'.esc_html($item[0]).'</a></li>'; echo '</ul>';
 }
+function ramser_energy_icon_file($file){
+    $src=get_template_directory_uri().'/assets/icons/'.ltrim($file,'/');
+    return '<img src="'.esc_url($src).'" alt="" aria-hidden="true" loading="lazy" width="28" height="28" style="width:28px;height:28px;display:block">';
+}
 function ramser_energy_icon($i){
-    $icons=[
-        1=>'service-bill-payment.svg',
-        2=>'service-bill.svg',
-        3=>'service-outage.svg',
-        4=>'service-schedule.svg',
-        5=>'service-connection.svg',
-        6=>'service-tracking.svg'
-    ];
-    $file=$icons[$i] ?? 'service-outage.svg';
-    $src=get_template_directory_uri().'/assets/icons/'.$file;
-    return '<img src="'.esc_url($src).'" alt="" aria-hidden="true" loading="lazy">';
+    $icons=[1=>'service-bill-payment.svg',2=>'service-bill.svg',3=>'service-outage.svg',4=>'service-schedule.svg',5=>'service-connection.svg',6=>'service-tracking.svg'];
+    return ramser_energy_icon_file($icons[$i] ?? 'service-outage.svg');
 }
 function ramser_energy_quick_icon($i){
     $icons=[1=>'quick-support.svg',2=>'quick-online.svg',3=>'quick-reliable.svg',4=>'quick-transparency.svg'];
-    $file=$icons[$i] ?? 'quick-support.svg';
-    $src=get_template_directory_uri().'/assets/icons/'.$file;
-    return '<img src="'.esc_url($src).'" alt="" aria-hidden="true" loading="lazy">';
+    return ramser_energy_icon_file($icons[$i] ?? 'quick-support.svg');
 }
+function ramser_energy_ui_icon($file){ return ramser_energy_icon_file($file); }
 function ramser_energy_img($key,$class=''){
     $url=get_theme_mod('re_img_'.$key,'');
     if($url) return '<img class="'.esc_attr($class).'" src="'.esc_url($url).'" alt="">';
