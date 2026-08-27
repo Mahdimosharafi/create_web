@@ -1,7 +1,7 @@
 <?php get_header(); $hero=get_theme_mod('re_hero_image'); $news_page=get_page_by_path('news'); $news_url=$news_page ? get_permalink($news_page) : home_url('/news/'); ?>
 <style>
 .status-image-slot{width:100%;aspect-ratio:16/7;border-radius:14px;overflow:hidden;background:#eef3f8;margin-bottom:14px;display:flex;align-items:center;justify-content:center}
-.status-image-slot img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.status-image-slot img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.045)}
 .status-image-slot .image-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;box-sizing:border-box;color:#7b8794;font-size:12px;line-height:1.8;background:#eef3f8}
 .status-panel{align-self:start;min-height:0!important;height:auto;padding:18px 20px!important;border-radius:14px;display:block}
 .status-panel:before,.status-panel:after{display:none}
