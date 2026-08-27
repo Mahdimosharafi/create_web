@@ -13,6 +13,16 @@
 .status-detail-btn{display:inline-flex!important;align-items:center;justify-content:center;gap:5px;background:#0a3975!important;color:#fff!important;border:1px solid rgba(255,255,255,.16)!important;border-radius:8px!important;padding:7px 12px!important;font-size:11px!important;font-weight:700!important;box-shadow:none!important;white-space:nowrap}
 .status-detail-btn:hover{background:#0d4b91!important;transform:none!important}
 .status-panel p{font-size:11px;line-height:1.8;max-width:none;margin:5px 0 0;color:#dbe7f6}
+/* رنگ‌بندی ملایم آیکون‌های آمار؛ شکل و اندازه آیکون‌ها بدون تغییر */
+.stats .stat:nth-child(1) .stat-icon{background:#e8f2ff;color:#2878d4}
+.stats .stat:nth-child(2) .stat-icon{background:#fff0e6;color:#ed7b35}
+.stats .stat:nth-child(3) .stat-icon{background:#eaf8ef;color:#35a763}
+.stats .stat:nth-child(4) .stat-icon{background:#f0eaff;color:#7f63d2}
+.stats .stat:nth-child(5) .stat-icon{background:#fff7dc;color:#d99d00}
+/* آیکون‌های اطلاعیه‌ها نیز کمی رنگ می‌گیرند، بدون تغییر مدل */
+.news-item:nth-child(1) .news-icon{background:#e8f2ff;color:#2878d4}
+.news-item:nth-child(2) .news-icon{background:#fff0e6;color:#ed7b35}
+.news-item:nth-child(3) .news-icon{background:#eaf8ef;color:#35a763}
 @media(max-width:700px){.status-image-slot{aspect-ratio:16/8}.status-info-row{gap:9px}.status-detail-btn{padding:6px 10px!important}}
 </style>
 <main>
