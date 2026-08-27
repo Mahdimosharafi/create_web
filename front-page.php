@@ -6,21 +6,19 @@
 .status-updated{display:block;text-align:left;direction:rtl;font-size:10px;color:#9aaec5;margin:0 2px 8px;font-weight:600}
 .status-panel{align-self:start;min-height:0!important;height:auto;padding:18px 20px!important;border-radius:14px;display:block}
 .status-panel:before,.status-panel:after{display:none}
-.status-panel h3{margin:0 0 7px;font-size:17px;line-height:1.5}
+.status-panel h3{margin:0 0 7px;font-size:17px;line-height:1.5;text-align:right}
 .status-info-row{display:flex;align-items:center;justify-content:flex-start;gap:14px;flex-wrap:wrap;margin:0 0 9px}
 .status-badge{margin:0}
 .status-region{font-size:11px;color:#dbe7f6;white-space:nowrap}
-.status-detail-wrap{display:flex;justify-content:center;align-items:center;margin:0 0 10px}
+.status-detail-wrap{display:flex;justify-content:flex-start;align-items:center;direction:ltr;margin:0 0 10px}
 .status-detail-btn{display:inline-flex!important;align-items:center;justify-content:center;gap:5px;background:#0a3975!important;color:#fff!important;border:1px solid rgba(255,255,255,.16)!important;border-radius:8px!important;padding:7px 16px!important;font-size:11px!important;font-weight:700!important;box-shadow:none!important;white-space:nowrap}
 .status-detail-btn:hover{background:#0d4b91!important;transform:none!important}
-.status-panel p{font-size:11px;line-height:1.8;max-width:none;margin:5px 0 0;color:#dbe7f6}
-/* رنگ‌بندی ملایم آیکون‌های آمار؛ شکل و اندازه آیکون‌ها بدون تغییر */
+.status-panel p{font-size:11px;line-height:1.8;max-width:none;margin:5px 0 0;color:#dbe7f6;text-align:right}
 .stats .stat:nth-child(1) .stat-icon{background:#e8f2ff;color:#2878d4}
 .stats .stat:nth-child(2) .stat-icon{background:#fff0e6;color:#ed7b35}
 .stats .stat:nth-child(3) .stat-icon{background:#eaf8ef;color:#35a763}
 .stats .stat:nth-child(4) .stat-icon{background:#f0eaff;color:#7f63d2}
 .stats .stat:nth-child(5) .stat-icon{background:#fff7dc;color:#d99d00}
-/* آیکون‌های اطلاعیه‌ها نیز کمی رنگ می‌گیرند، بدون تغییر مدل */
 .news-item:nth-child(1) .news-icon{background:#e8f2ff;color:#2878d4}
 .news-item:nth-child(2) .news-icon{background:#fff0e6;color:#ed7b35}
 .news-item:nth-child(3) .news-icon{background:#eaf8ef;color:#35a763}
