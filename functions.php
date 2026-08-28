@@ -1,117 +1,64 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-function ramser_energy_setup() {
-    add_theme_support('title-tag');
-    add_theme_support('post-thumbnails');
-    add_theme_support('custom-logo', ['height'=>80,'width'=>180,'flex-height'=>true,'flex-width'=>true]);
-    add_theme_support('html5', ['search-form','comment-form','comment-list','gallery','caption','style','script']);
-    register_nav_menus(['primary'=>'منوی اصلی']);
+function ramser_energy_setup(){
+ add_theme_support('title-tag'); add_theme_support('post-thumbnails');
+ add_theme_support('custom-logo',['height'=>80,'width'=>180,'flex-height'=>true,'flex-width'=>true]);
+ add_theme_support('html5',['search-form','comment-form','comment-list','gallery','caption','style','script']);
+ register_nav_menus(['primary'=>'منوی اصلی']);
 }
 add_action('after_setup_theme','ramser_energy_setup');
-
-function ramser_energy_assets() {
-    wp_enqueue_style('ramser-energy-style', get_stylesheet_uri(), [], '2.0.5');
-    wp_enqueue_style('ramser-energy-estedad', 'https://fonts.googleapis.com/css2?family=Estedad:wght@100..900&display=swap', [], null);
+function ramser_energy_assets(){
+ wp_enqueue_style('ramser-energy-style',get_stylesheet_uri(),[],'2.0.6');
+ wp_enqueue_style('ramser-energy-estedad','https://fonts.googleapis.com/css2?family=Estedad:wght@100..900&display=swap',[],null);
 }
 add_action('wp_enqueue_scripts','ramser_energy_assets');
 
-function ramser_energy_defaults() {
-    return [
-        'brand_title'=>'شرکت توزیع نیروی برق مازندران','brand_subtitle'=>'مدیریت توزیع نیروی برق شهرستان رامسر','phone'=>'011-۴۲۳۳۳۳۳۳','search_placeholder'=>'جستجو...',
-        'hero_eyebrow'=>'با انرژی روشن','hero_title'=>'رامسر را روشن نگه می‌داریم','hero_text'=>'تأمین برق پایدار، مطمئن و با کیفیت برای شهروندان شهرستان رامسر','hero_button'=>'گزارش سریع خرابی',
-        'quick_1'=>'پاسخگویی ۲۴ ساعته','quick_2'=>'خدمات آنلاین','quick_3'=>'برق مطمئن','quick_4'=>'شفافیت و پاسخگویی',
-        'services_title'=>'خدمات سریع','services_subtitle'=>'اکثر خدمات پرکاربرد را اینجا پیدا کنید','services_link'=>'مشاهده همه خدمات',
-        'service_1'=>'پرداخت قبض برق','service_1_desc'=>'پرداخت آنلاین قبض به صورت سریع و آسان','service_2'=>'مشاهده قبض','service_2_desc'=>'مشاهده و دریافت قبض برق','service_3'=>'اعلام خرابی','service_3_desc'=>'گزارش قطعی یا خرابی شبکه برق','service_4'=>'برنامه خاموشی','service_4_desc'=>'مشاهده برنامه خاموشی‌های احتمالی','service_5'=>'درخواست انشعاب','service_5_desc'=>'ثبت درخواست انشعاب جدید برق','service_6'=>'پیگیری درخواست','service_6_desc'=>'مشاهده وضعیت و پیگیری درخواست‌ها',
-        'status_title'=>'وضعیت برق در رامسر','status_ok'=>'وضعیت عادی','status_text'=>'همه مناطق تحت پوشش دارای برق پایدار هستند.','status_button'=>'مشاهده جزئیات مناطق',
-        'news_title'=>'آخرین اطلاعیه‌ها','news_more'=>'مشاهده همه','news_1'=>'استقرار سامانه پاسخگویی هوشمند برق','news_2'=>'بهینه سازی مصرف برق در تابستان','news_3'=>'برنامه خاموشی روز شنبه ۲۴ خرداد',
-        'stat_1'=>'۷۸,۵۴۲','stat_1_label'=>'مشترک','stat_2'=>'۲۵۶','stat_2_label'=>'کیلومتر شبکه فشار متوسط','stat_3'=>'۸۱۲','stat_3_label'=>'کیلومتر شبکه فشار ضعیف','stat_4'=>'۱۸۶','stat_4_label'=>'دستگاه توزیع','stat_5'=>'۱۲۱','stat_5_label'=>'مرکز پاسخگویی ۲۴ ساعته',
-        'education_title'=>'مقالات و آموزش','education_more'=>'مشاهده همه','education_1'=>'چگونه مصرف برق را کاهش دهیم؟','education_2'=>'آشنایی با تجهیزات اندازه‌گیری برق','education_3'=>'نکات ایمنی در استفاده از برق',
-        'articles_title'=>'اخبار','articles_more'=>'مشاهده همه','featured_title'=>'جلسه هماهنگی مدیریت برق رامسر با شهرداران برگزار شد','featured_text'=>'به منظور بررسی مشکلات و راهکارهای بهبود خدمات، جلسه هماهنگی برگزار شد.',
-        'app_title'=>'اپلیکیشن برق من','app_text'=>'قبض خود را مشاهده و پرداخت کنید، از خاموشی‌ها مطلع شوید و درخواست خود را ثبت کنید.','app_bazaar'=>'دانلود از بازار','app_google'=>'دانلود از گوگل پلی',
-        'footer_about_title'=>'درباره ما','footer_about'=>'شرکت توزیع نیروی برق غرب مازندران، مدیریت توزیع نیروی برق شهرستان رامسر با هدف ارائه خدمات مطلوب به مشترکین و تأمین برق پایدار و مطمئن فعالیت می‌کند.','footer_services_title'=>'خدمات پرکاربرد','footer_services'=>'پرداخت قبض|مشاهده قبض|درخواست انشعاب|پیگیری درخواست|سوالات متداول','footer_access_title'=>'دسترسی سریع','footer_access'=>'صفحه اصلی|خدمات مشترکین|خاموشی‌ها|اعلام خرابی|اخبار و اطلاعیه‌ها','footer_contact_title'=>'راه‌های ارتباطی','footer_contact'=>'رامسر، خیابان شهید رجایی، شرکت توزیع نیروی برق غرب مازندران|011-۴۲۳۳۳۳۳۳|info@mazpnedc.ir','copyright'=>'تمامی حقوق این سایت متعلق به شرکت توزیع نیروی برق غرب مازندران - مدیریت توزیع نیروی برق شهرستان رامسر است.','developer'=>'طراحی و توسعه: مهدی مشرفی'
-    ];
-}
-function ramser_energy_get($key) { $d=ramser_energy_defaults(); return get_theme_mod('re_'.$key, $d[$key] ?? ''); }
+function ramser_energy_defaults(){return [
+'brand_title'=>'شرکت توزیع نیروی برق مازندران','brand_subtitle'=>'مدیریت توزیع نیروی برق شهرستان رامسر','phone'=>'011-۴۲۳۳۳۳۳۳','search_placeholder'=>'جستجو...',
+'hero_eyebrow'=>'با انرژی روشن','hero_title'=>'رامسر را روشن نگه می‌داریم','hero_text'=>'تأمین برق پایدار، مطمئن و با کیفیت برای شهروندان شهرستان رامسر','hero_button'=>'گزارش سریع خرابی',
+'quick_1'=>'پاسخگویی ۲۴ ساعته','quick_2'=>'خدمات آنلاین','quick_3'=>'برق مطمئن','quick_4'=>'شفافیت و پاسخگویی',
+'services_title'=>'خدمات سریع','services_subtitle'=>'اکثر خدمات پرکاربرد را اینجا پیدا کنید','services_link'=>'مشاهده همه خدمات',
+'service_1'=>'پرداخت قبض برق','service_1_desc'=>'پرداخت آنلاین قبض به صورت سریع و آسان','service_2'=>'مشاهده قبض','service_2_desc'=>'مشاهده و دریافت قبض برق','service_3'=>'اعلام خرابی','service_3_desc'=>'گزارش قطعی یا خرابی شبکه برق','service_4'=>'برنامه خاموشی','service_4_desc'=>'مشاهده برنامه خاموشی‌های احتمالی','service_5'=>'درخواست انشعاب','service_5_desc'=>'ثبت درخواست انشعاب جدید برق','service_6'=>'پیگیری درخواست','service_6_desc'=>'مشاهده وضعیت و پیگیری درخواست‌ها',
+'status_title'=>'وضعیت برق در رامسر','status_ok'=>'وضعیت عادی','status_text'=>'همه مناطق تحت پوشش دارای برق پایدار هستند.','status_button'=>'مشاهده جزئیات مناطق',
+'news_title'=>'آخرین اطلاعیه‌ها','news_more'=>'مشاهده همه','news_1'=>'استقرار سامانه پاسخگویی هوشمند برق','news_2'=>'بهینه سازی مصرف برق در تابستان','news_3'=>'برنامه خاموشی روز شنبه ۲۴ خرداد',
+'stat_1'=>'۷۸,۵۴۲','stat_1_label'=>'مشترک','stat_2'=>'۲۵۶','stat_2_label'=>'کیلومتر شبکه فشار متوسط','stat_3'=>'۸۱۲','stat_3_label'=>'کیلومتر شبکه فشار ضعیف','stat_4'=>'۱۸۶','stat_4_label'=>'دستگاه توزیع','stat_5'=>'۱۲۱','stat_5_label'=>'مرکز پاسخگویی ۲۴ ساعته',
+'education_title'=>'مقالات و آموزش','education_more'=>'مشاهده همه','education_1'=>'چگونه مصرف برق را کاهش دهیم؟','education_2'=>'آشنایی با تجهیزات اندازه‌گیری برق','education_3'=>'نکات ایمنی در استفاده از برق',
+'articles_title'=>'اخبار','articles_more'=>'مشاهده همه','featured_title'=>'جلسه هماهنگی مدیریت برق رامسر با شهرداران برگزار شد','featured_text'=>'به منظور بررسی مشکلات و راهکارهای بهبود خدمات، جلسه هماهنگی برگزار شد.',
+'app_title'=>'اپلیکیشن برق من','app_text'=>'قبض خود را مشاهده و پرداخت کنید، از خاموشی‌ها مطلع شوید و درخواست خود را ثبت کنید.','app_bazaar'=>'دانلود از بازار','app_google'=>'دانلود از گوگل پلی',
+'footer_about_title'=>'درباره ما','footer_about'=>'شرکت توزیع نیروی برق غرب مازندران، مدیریت توزیع نیروی برق شهرستان رامسر با هدف ارائه خدمات مطلوب به مشترکین و تأمین برق پایدار و مطمئن فعالیت می‌کند.','footer_services_title'=>'خدمات پرکاربرد','footer_services'=>'پرداخت قبض|مشاهده قبض|درخواست انشعاب|پیگیری درخواست|سوالات متداول','footer_access_title'=>'دسترسی سریع','footer_access'=>'صفحه اصلی|خدمات مشترکین|خاموشی‌ها|اعلام خرابی|اخبار و اطلاعیه‌ها','footer_contact_title'=>'راه‌های ارتباطی','footer_contact'=>'رامسر، خیابان شهید رجایی، شرکت توزیع نیروی برق غرب مازندران|011-۴۲۳۳۳۳۳۳|info@mazpnedc.ir','copyright'=>'تمامی حقوق این سایت متعلق به شرکت توزیع نیروی برق غرب مازندران - مدیریت توزیع نیروی برق شهرستان رامسر است.','developer'=>'طراحی و توسعه: مهدی مشرفی'];}
+function ramser_energy_get($key){$d=ramser_energy_defaults();return get_theme_mod('re_'.$key,$d[$key]??'');}
+function ramser_energy_page_defaults(){return [
+'outage_title'=>'برنامه خاموشی‌ها','outage_notice'=>'توجه: برنامه خاموشی بر اساس آخرین اطلاعات شبکه نمایش داده می‌شود.','outage_region'=>'منطقه','outage_date'=>'تاریخ','outage_time'=>'ساعت قطع','outage_duration'=>'مدت زمان','outage_reason'=>'نوع خاموشی','outage_empty'=>'در حال حاضر برنامه‌ای برای این محدوده ثبت نشده است.',
+'report_title'=>'اعلام خرابی','report_intro'=>'خرابی یا قطعی برق را سریعاً به ما اطلاع دهید تا در کوتاه‌ترین زمان پیگیری شود.','report_type'=>'نوع خرابی','report_address'=>'آدرس دقیق','report_phone'=>'شماره همراه','report_description'=>'توضیحات','report_submit'=>'ثبت و ارسال گزارش','report_map'=>'محل تقریبی خرابی روی نقشه','report_success'=>'گزارش شما با موفقیت ثبت شد. کد پیگیری برای شما نمایش داده خواهد شد.',
+'billpay_title'=>'پرداخت قبض','billpay_intro'=>'شناسه قبض یا شناسه پرداخت خود را وارد کنید و قبض را آنلاین پرداخت نمایید.','billpay_id'=>'شناسه قبض','billpay_payment'=>'شناسه پرداخت','billpay_amount'=>'مبلغ قابل پرداخت','billpay_card'=>'شماره کارت','billpay_pay'=>'پرداخت قبض','billpay_secure'=>'پرداخت امن و رمزنگاری‌شده','billpay_help'=>'اطلاعات قبض را با دقت وارد کنید.',
+'bill_title'=>'مشاهده قبض','bill_intro'=>'با وارد کردن شناسه قبض، جزئیات و سوابق قبض برق خود را مشاهده کنید.','bill_tab_current'=>'قبض جاری','bill_tab_history'=>'سوابق قبض','bill_total'=>'مبلغ قابل پرداخت','bill_due'=>'مهلت پرداخت','bill_number'=>'شماره قبض','bill_period'=>'دوره مصرف','bill_download'=>'دریافت PDF قبض',
+'tracking_title'=>'پیگیری درخواست‌ها','tracking_intro'=>'با وارد کردن کد پیگیری، آخرین وضعیت درخواست خود را مشاهده کنید.','tracking_code'=>'کد پیگیری','tracking_national'=>'کد ملی / موبایل','tracking_search'=>'پیگیری درخواست','tracking_status'=>'وضعیت درخواست','tracking_date'=>'تاریخ ثبت','tracking_type'=>'نوع درخواست','tracking_result'=>'درخواست شما در حال بررسی است.',
+'news_page_title'=>'اخبار و اطلاعیه‌ها','news_page_intro'=>'آخرین اخبار، اطلاعیه‌ها و رویدادهای مدیریت توزیع برق رامسر','news_read'=>'ادامه مطلب','news_filter'=>'دسته‌بندی','news_all'=>'همه اخبار','news_empty'=>'هنوز خبری ثبت نشده است.',
+'about_title'=>'درباره ما','about_intro'=>'مدیریت توزیع نیروی برق شهرستان رامسر','about_text'=>'این مجموعه با هدف ارائه خدمات مطلوب به مشترکین، توسعه شبکه و تأمین برق پایدار و مطمئن فعالیت می‌کند.','about_mission'=>'ماموریت ما','about_mission_text'=>'ارائه خدمات سریع، شفاف و قابل اعتماد به شهروندان و مشترکین.','about_values'=>'ارزش‌های ما','about_values_text'=>'پاسخگویی، شفافیت، ایمنی، نوآوری و رضایت مشترکین.',
+'contact_title'=>'تماس با ما','contact_intro'=>'برای ارتباط با مدیریت توزیع برق رامسر از راه‌های زیر با ما در تماس باشید.','contact_address'=>'رامسر، خیابان شهید رجایی، شرکت توزیع نیروی برق غرب مازندران','contact_phone'=>'011-۴۲۳۳۳۳۳۳','contact_email'=>'info@mazpnedc.ir','contact_form_name'=>'نام و نام خانوادگی','contact_form_phone'=>'شماره تماس','contact_form_message'=>'پیام شما','contact_form_submit'=>'ارسال پیام'];}
+function ramser_energy_page_get($key){$d=ramser_energy_page_defaults();return get_theme_mod('re_page_'.$key,$d[$key]??'');}
 
-function ramser_energy_page_defaults() {
-    return [
-        'outage_title'=>'برنامه خاموشی‌ها','outage_notice'=>'توجه: برنامه خاموشی بر اساس آخرین اطلاعات شبکه نمایش داده می‌شود.','outage_region'=>'منطقه','outage_date'=>'تاریخ','outage_time'=>'ساعت قطع','outage_duration'=>'مدت زمان','outage_reason'=>'نوع خاموشی','outage_empty'=>'در حال حاضر برنامه‌ای برای این محدوده ثبت نشده است.',
-        'report_title'=>'اعلام خرابی','report_intro'=>'خرابی یا قطعی برق را سریعاً به ما اطلاع دهید تا در کوتاه‌ترین زمان پیگیری شود.','report_type'=>'نوع خرابی','report_address'=>'آدرس دقیق','report_phone'=>'شماره همراه','report_description'=>'توضیحات','report_submit'=>'ثبت و ارسال گزارش','report_map'=>'محل تقریبی خرابی روی نقشه','report_success'=>'گزارش شما با موفقیت ثبت شد. کد پیگیری برای شما نمایش داده خواهد شد.',
-        'billpay_title'=>'پرداخت قبض','billpay_intro'=>'شناسه قبض یا شناسه پرداخت خود را وارد کنید و قبض را آنلاین پرداخت نمایید.','billpay_id'=>'شناسه قبض','billpay_payment'=>'شناسه پرداخت','billpay_amount'=>'مبلغ قابل پرداخت','billpay_card'=>'شماره کارت','billpay_pay'=>'پرداخت قبض','billpay_secure'=>'پرداخت امن و رمزنگاری‌شده','billpay_help'=>'اطلاعات قبض را با دقت وارد کنید.',
-        'bill_title'=>'مشاهده قبض','bill_intro'=>'با وارد کردن شناسه قبض، جزئیات و سوابق قبض برق خود را مشاهده کنید.','bill_tab_current'=>'قبض جاری','bill_tab_history'=>'سوابق قبض','bill_total'=>'مبلغ قابل پرداخت','bill_due'=>'مهلت پرداخت','bill_number'=>'شماره قبض','bill_period'=>'دوره مصرف','bill_download'=>'دریافت PDF قبض',
-        'tracking_title'=>'پیگیری درخواست‌ها','tracking_intro'=>'با وارد کردن کد پیگیری، آخرین وضعیت درخواست خود را مشاهده کنید.','tracking_code'=>'کد پیگیری','tracking_national'=>'کد ملی / موبایل','tracking_search'=>'پیگیری درخواست','tracking_status'=>'وضعیت درخواست','tracking_date'=>'تاریخ ثبت','tracking_type'=>'نوع درخواست','tracking_result'=>'درخواست شما در حال بررسی است.',
-        'news_page_title'=>'اخبار و اطلاعیه‌ها','news_page_intro'=>'آخرین اخبار، اطلاعیه‌ها و رویدادهای مدیریت توزیع برق رامسر','news_read'=>'ادامه مطلب','news_filter'=>'دسته‌بندی','news_all'=>'همه اخبار','news_empty'=>'هنوز خبری ثبت نشده است.',
-        'about_title'=>'درباره ما','about_intro'=>'مدیریت توزیع نیروی برق شهرستان رامسر','about_text'=>'این مجموعه با هدف ارائه خدمات مطلوب به مشترکین، توسعه شبکه و تأمین برق پایدار و مطمئن فعالیت می‌کند.','about_mission'=>'ماموریت ما','about_mission_text'=>'ارائه خدمات سریع، شفاف و قابل اعتماد به شهروندان و مشترکین.','about_values'=>'ارزش‌های ما','about_values_text'=>'پاسخگویی، شفافیت، ایمنی، نوآوری و رضایت مشترکین.',
-        'contact_title'=>'تماس با ما','contact_intro'=>'برای ارتباط با مدیریت توزیع برق رامسر از راه‌های زیر با ما در تماس باشید.','contact_address'=>'رامسر، خیابان شهید رجایی، شرکت توزیع نیروی برق غرب مازندران','contact_phone'=>'011-۴۲۳۳۳۳۳۳','contact_email'=>'info@mazpnedc.ir','contact_form_name'=>'نام و نام خانوادگی','contact_form_phone'=>'شماره تماس','contact_form_message'=>'پیام شما','contact_form_submit'=>'ارسال پیام'
-    ];
-}
-function ramser_energy_page_get($key) { $d=ramser_energy_page_defaults(); return get_theme_mod('re_page_'.$key, $d[$key] ?? ''); }
+function ramser_energy_customize_register($wp_customize){
+ $wp_customize->add_panel('re_panel',['title'=>'تنظیمات سایت برق رامسر','priority'=>30,'description'=>'نوشته‌ها و تصاویر قالب از این بخش قابل تغییر هستند.']);
+ $sections=['header'=>['سربرگ و برند',['brand_title','brand_subtitle','phone','search_placeholder']],'hero'=>['صفحه اصلی - هدر',['hero_eyebrow','hero_title','hero_text','hero_button']],'services'=>['صفحه اصلی - خدمات',['services_title','services_subtitle','services_link','service_1','service_1_desc','service_2','service_2_desc','service_3','service_3_desc','service_4','service_4_desc','service_5','service_5_desc','service_6','service_6_desc']],'status'=>['صفحه اصلی - وضعیت برق',['status_title','status_ok','status_text','status_button']],'news'=>['صفحه اصلی - اطلاعیه‌ها',['news_title','news_more','news_1','news_2','news_3']],'stats'=>['صفحه اصلی - آمار',['stat_1','stat_1_label','stat_2','stat_2_label','stat_3','stat_3_label','stat_4','stat_4_label','stat_5','stat_5_label']],'content'=>['صفحه اصلی - اخبار و آموزش',['education_title','education_more','education_1','education_2','education_3','articles_title','articles_more','featured_title','featured_text','app_title','app_text','app_bazaar','app_google']],'footer'=>['پاورقی',['footer_about_title','footer_about','footer_services_title','footer_services','footer_access_title','footer_access','footer_contact_title','footer_contact','copyright','developer']],'pages'=>['متن صفحات داخلی',array_keys(ramser_energy_page_defaults())]];
+ foreach($sections as $id=>$data){$wp_customize->add_section('re_'.$id,['title'=>$data[0],'panel'=>'re_panel']);foreach($data[1] as $key){$default=ramser_energy_defaults()[$key]??ramser_energy_page_defaults()[$key]??'';$wp_customize->add_setting('re_'.$key,['default'=>$default,'sanitize_callback'=>'sanitize_textarea_field']);$wp_customize->add_control('re_'.$key,['label'=>ramser_energy_label($key),'section'=>'re_'.$id,'type'=>'textarea']);}}
 
-function ramser_energy_customize_register($wp_customize) {
-    $wp_customize->add_panel('re_panel', ['title'=>'تنظیمات سایت برق رامسر','priority'=>30,'description'=>'نوشته‌ها و تصاویر قالب از این بخش قابل تغییر هستند.']);
-    $sections = [
-        'header'=>['سربرگ و برند',['brand_title','brand_subtitle','phone','search_placeholder']],
-        'hero'=>['صفحه اصلی - هدر',['hero_eyebrow','hero_title','hero_text','hero_button']],
-        'services'=>['صفحه اصلی - خدمات',['services_title','services_subtitle','services_link','service_1','service_1_desc','service_2','service_2_desc','service_3','service_3_desc','service_4','service_4_desc','service_5','service_5_desc','service_6','service_6_desc']],
-        'status'=>['صفحه اصلی - وضعیت برق',['status_title','status_ok','status_text','status_button']],
-        'news'=>['صفحه اصلی - اطلاعیه‌ها',['news_title','news_more','news_1','news_2','news_3']],
-        'stats'=>['صفحه اصلی - آمار',['stat_1','stat_1_label','stat_2','stat_2_label','stat_3','stat_3_label','stat_4','stat_4_label','stat_5','stat_5_label']],
-        'content'=>['صفحه اصلی - اخبار و آموزش',['education_title','education_more','education_1','education_2','education_3','articles_title','articles_more','featured_title','featured_text','app_title','app_text','app_bazaar','app_google']],
-        'footer'=>['پاورقی',['footer_about_title','footer_about','footer_services_title','footer_services','footer_access_title','footer_access','footer_contact_title','footer_contact','copyright','developer']],
-        'pages'=>['متن صفحات داخلی',array_keys(ramser_energy_page_defaults())],
-    ];
-    foreach($sections as $id=>$data){
-        $wp_customize->add_section('re_'.$id,['title'=>$data[0],'panel'=>'re_panel']);
-        foreach($data[1] as $key){
-            $wp_customize->add_setting('re_'.$key,['default'=>ramser_energy_defaults()[$key] ?? ramser_energy_page_defaults()[$key] ?? '','sanitize_callback'=>'sanitize_textarea_field']);
-            $wp_customize->add_control('re_'.$key,['label'=>ramser_energy_label($key),'section'=>'re_'.$id,'type'=>'textarea']);
-        }
-    }
-    $wp_customize->add_section('re_images',['title'=>'تصاویر تمام صفحات','panel'=>'re_panel']);
-    $images=['hero_image'=>'تصویر هدر صفحه اصلی','status_map'=>'تصویر وضعیت شبکه','education_1_image'=>'تصویر آموزش ۱','education_2_image'=>'تصویر آموزش ۲','education_3_image'=>'تصویر آموزش ۳','featured_image'=>'تصویر خبر اصلی','news_1_image'=>'تصویر خبر ۱','news_2_image'=>'تصویر خبر ۲','news_3_image'=>'تصویر خبر ۳','app_image'=>'تصویر اپلیکیشن','outage_image'=>'تصویر صفحه خاموشی','report_image'=>'تصویر صفحه اعلام خرابی','billpay_image'=>'تصویر صفحه پرداخت قبض','bill_image'=>'تصویر صفحه مشاهده قبض','tracking_image'=>'تصویر صفحه پیگیری','news_image'=>'تصویر صفحه اخبار','about_image'=>'تصویر صفحه درباره ما','contact_image'=>'تصویر صفحه تماس با ما'];
-    foreach($images as $key=>$label){
-        $wp_customize->add_setting('re_img_'.$key,['default'=>'','sanitize_callback'=>'esc_url_raw']);
-        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'re_img_'.$key,['label'=>$label,'section'=>'re_images']));
-    }
+ /* ۹ جایگاه مستقل برای تصاویر اخبار */
+ $wp_customize->add_section('re_news_images',['title'=>'اخبار و اطلاعیه‌ها - تصاویر','panel'=>'re_panel','priority'=>5,'description'=>'تصویر خبر ویژه و تصاویر ۸ خبر را از این بخش آپلود کنید.']);
+ $news_images=['news_featured'=>'تصویر خبر ویژه (مهم‌ترین اطلاعیه)'];for($i=1;$i<=8;$i++)$news_images['news_'.$i]='تصویر خبر '.$i;
+ foreach($news_images as $key=>$label){$wp_customize->add_setting('re_img_'.$key,['default'=>'','sanitize_callback'=>'esc_url_raw']);$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'re_img_'.$key,['label'=>$label,'section'=>'re_news_images']));}
+
+ $wp_customize->add_section('re_images',['title'=>'تصاویر تمام صفحات','panel'=>'re_panel']);
+ $images=['hero_image'=>'تصویر هدر صفحه اصلی','status_map'=>'تصویر وضعیت شبکه','education_1_image'=>'تصویر آموزش ۱','education_2_image'=>'تصویر آموزش ۲','education_3_image'=>'تصویر آموزش ۳','featured_image'=>'تصویر خبر اصلی','news_1_image'=>'تصویر خبر ۱','news_2_image'=>'تصویر خبر ۲','news_3_image'=>'تصویر خبر ۳','app_image'=>'تصویر اپلیکیشن','outage_image'=>'تصویر صفحه خاموشی','report_image'=>'تصویر صفحه اعلام خرابی','billpay_image'=>'تصویر صفحه پرداخت قبض','bill_image'=>'تصویر صفحه مشاهده قبض','tracking_image'=>'تصویر صفحه پیگیری','news_image'=>'تصویر صفحه اخبار','about_image'=>'تصویر صفحه درباره ما','contact_image'=>'تصویر صفحه تماس با ما'];
+ foreach($images as $key=>$label){$wp_customize->add_setting('re_img_'.$key,['default'=>'','sanitize_callback'=>'esc_url_raw']);$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'re_img_'.$key,['label'=>$label,'section'=>'re_images']));}
 }
 add_action('customize_register','ramser_energy_customize_register');
-
-function ramser_energy_label($key){
-    $labels=['brand_title'=>'عنوان سازمان','brand_subtitle'=>'زیرعنوان سازمان','phone'=>'شماره تماس','search_placeholder'=>'متن جستجو','hero_eyebrow'=>'متن کوچک هدر','hero_title'=>'عنوان اصلی','hero_text'=>'توضیح هدر','hero_button'=>'متن دکمه هدر','services_title'=>'عنوان خدمات','services_subtitle'=>'توضیح خدمات','services_link'=>'متن مشاهده خدمات','status_title'=>'عنوان وضعیت برق','status_ok'=>'متن وضعیت','status_text'=>'توضیح وضعیت','status_button'=>'متن دکمه وضعیت','news_title'=>'عنوان اطلاعیه‌ها','news_more'=>'متن مشاهده اطلاعیه‌ها','education_title'=>'عنوان آموزش','education_more'=>'متن مشاهده آموزش','articles_title'=>'عنوان اخبار','articles_more'=>'متن مشاهده اخبار','featured_title'=>'عنوان خبر اصلی','featured_text'=>'توضیح خبر اصلی','app_title'=>'عنوان اپلیکیشن','app_text'=>'توضیح اپلیکیشن','app_bazaar'=>'متن بازار','app_google'=>'متن گوگل پلی'];
-    if(isset($labels[$key])) return $labels[$key];
-    if(strpos($key,'service_')===0) return 'خدمت '.$key;
-    if(strpos($key,'stat_')===0) return 'آمار '.$key;
-    if(strpos($key,'news_')===0) return 'اطلاعیه '.$key;
-    if(strpos($key,'education_')===0) return 'آموزش '.$key;
-    if(strpos($key,'page_')===0) return 'متن '.$key;
-    return 'متن '.$key;
-}
-function ramser_energy_logo(){
-    $logo=get_theme_mod('re_logo_image');
-    if($logo) return '<img src="'.esc_url($logo).'" alt="'.esc_attr(ramser_energy_get('brand_title')).'">';
-    return '<div class="logo-fallback">⚡</div>';
-}
-function ramser_energy_menu(){
-    if(has_nav_menu('primary')) { wp_nav_menu(['theme_location'=>'primary','container'=>false,'menu_class'=>'menu']); return; }
-    $items=[['صفحه اصلی',home_url('/')],['خدمات مشترکین',home_url('/services/')],['خاموشی‌ها',home_url('/program-outage/')],['اعلام خرابی',home_url('/report-outage/')],['اخبار و اطلاعیه‌ها',home_url('/news/')],['درباره ما',home_url('/about/')],['تماس با ما',home_url('/contact/')]];
-    echo '<ul class="menu">'; foreach($items as $item) echo '<li><a href="'.esc_url($item[1]).'">'.esc_html($item[0]).'</a></li>'; echo '</ul>';
-}
-function ramser_energy_icon_file($file){
-    $src=get_template_directory_uri().'/assets/icons/'.ltrim($file,'/');
-    return '<img src="'.esc_url($src).'" alt="" aria-hidden="true" loading="lazy" width="28" height="28" style="width:28px;height:28px;display:block">';
-}
-function ramser_energy_icon($i){
-    $icons=[1=>'service-bill-payment.svg',2=>'service-bill.svg',3=>'service-outage.svg',4=>'service-schedule.svg',5=>'service-connection.svg',6=>'service-tracking.svg'];
-    return ramser_energy_icon_file($icons[$i] ?? 'service-outage.svg');
-}
-function ramser_energy_quick_icon($i){
-    $icons=[1=>'quick-support.svg',2=>'quick-online.svg',3=>'quick-reliable.svg',4=>'quick-transparency.svg'];
-    return ramser_energy_icon_file($icons[$i] ?? 'quick-support.svg');
-}
-function ramser_energy_ui_icon($file){ return ramser_energy_icon_file($file); }
-function ramser_energy_img($key,$class=''){
-    $url=get_theme_mod('re_img_'.$key,'');
-    if($url) return '<img class="'.esc_attr($class).'" src="'.esc_url($url).'" alt="">';
-    return '<div class="image-placeholder '.esc_attr($class).'">برای افزودن تصویر، از بخش «تصاویر تمام صفحات» در سفارشی‌سازی استفاده کنید.</div>';
-}
+function ramser_energy_label($key){$labels=['brand_title'=>'عنوان سازمان','brand_subtitle'=>'زیرعنوان سازمان','phone'=>'شماره تماس','search_placeholder'=>'متن جستجو','hero_eyebrow'=>'متن کوچک هدر','hero_title'=>'عنوان اصلی','hero_text'=>'توضیح هدر','hero_button'=>'متن دکمه هدر','services_title'=>'عنوان خدمات','services_subtitle'=>'توضیح خدمات','services_link'=>'متن مشاهده خدمات','status_title'=>'عنوان وضعیت برق','status_ok'=>'متن وضعیت','status_text'=>'توضیح وضعیت','status_button'=>'متن دکمه وضعیت','news_title'=>'عنوان اطلاعیه‌ها','news_more'=>'متن مشاهده اطلاعیه‌ها','education_title'=>'عنوان آموزش','education_more'=>'متن مشاهده آموزش','articles_title'=>'عنوان اخبار','articles_more'=>'متن مشاهده اخبار','featured_title'=>'عنوان خبر اصلی','featured_text'=>'توضیح خبر اصلی','app_title'=>'عنوان اپلیکیشن','app_text'=>'توضیح اپلیکیشن','app_bazaar'=>'متن بازار','app_google'=>'متن گوگل پلی'];if(isset($labels[$key]))return $labels[$key];if(strpos($key,'service_')===0)return 'خدمت '.$key;if(strpos($key,'stat_')===0)return 'آمار '.$key;if(strpos($key,'news_')===0)return 'اطلاعیه '.$key;if(strpos($key,'education_')===0)return 'آموزش '.$key;return 'متن '.$key;}
+function ramser_energy_logo(){$logo=get_theme_mod('re_logo_image');if($logo)return '<img src="'.esc_url($logo).'" alt="'.esc_attr(ramser_energy_get('brand_title')).'">';return '<div class="logo-fallback">⚡</div>';}
+function ramser_energy_menu(){if(has_nav_menu('primary')){wp_nav_menu(['theme_location'=>'primary','container'=>false,'menu_class'=>'menu']);return;}$items=[['صفحه اصلی',home_url('/')],['خدمات مشترکین',home_url('/services/')],['خاموشی‌ها',home_url('/program-outage/')],['اعلام خرابی',home_url('/report-outage/')],['اخبار و اطلاعیه‌ها',home_url('/news/')],['درباره ما',home_url('/about/')],['تماس با ما',home_url('/contact/')]];echo '<ul class="menu">';foreach($items as $item)echo '<li><a href="'.esc_url($item[1]).'">'.esc_html($item[0]).'</a></li>';echo '</ul>';}
+function ramser_energy_icon_file($file){$src=get_template_directory_uri().'/assets/icons/'.ltrim($file,'/');return '<img src="'.esc_url($src).'" alt="" aria-hidden="true" loading="lazy" width="28" height="28" style="width:28px;height:28px;display:block">';}
+function ramser_energy_icon($i){$icons=[1=>'service-bill-payment.svg',2=>'service-bill.svg',3=>'service-outage.svg',4=>'service-schedule.svg',5=>'service-connection.svg',6=>'service-tracking.svg'];return ramser_energy_icon_file($icons[$i]??'service-outage.svg');}
+function ramser_energy_quick_icon($i){$icons=[1=>'quick-support.svg',2=>'quick-online.svg',3=>'quick-reliable.svg',4=>'quick-transparency.svg'];return ramser_energy_icon_file($icons[$i]??'quick-support.svg');}
+function ramser_energy_ui_icon($file){return ramser_energy_icon_file($file);}
+function ramser_energy_img($key,$class=''){$url=get_theme_mod('re_img_'.$key,'');if($url)return '<img class="'.esc_attr($class).'" src="'.esc_url($url).'" alt="">';return '<div class="image-placeholder '.esc_attr($class).'">برای افزودن تصویر، از بخش «تصاویر تمام صفحات» در سفارشی‌سازی استفاده کنید.</div>';}
