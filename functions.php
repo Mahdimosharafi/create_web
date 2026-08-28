@@ -2,14 +2,14 @@
 if (!defined('ABSPATH')) exit;
 
 function ramser_energy_setup(){
- add_theme_support('title-tag'); add_theme_support('post-thumbnails');
+ add_theme_support('title-tag');add_theme_support('post-thumbnails');
  add_theme_support('custom-logo',['height'=>80,'width'=>180,'flex-height'=>true,'flex-width'=>true]);
  add_theme_support('html5',['search-form','comment-form','comment-list','gallery','caption','style','script']);
  register_nav_menus(['primary'=>'منوی اصلی']);
 }
 add_action('after_setup_theme','ramser_energy_setup');
 function ramser_energy_assets(){
- wp_enqueue_style('ramser-energy-style',get_stylesheet_uri(),[],'2.0.6');
+ wp_enqueue_style('ramser-energy-style',get_stylesheet_uri(),[],'2.0.7');
  wp_enqueue_style('ramser-energy-estedad','https://fonts.googleapis.com/css2?family=Estedad:wght@100..900&display=swap',[],null);
 }
 add_action('wp_enqueue_scripts','ramser_energy_assets');
@@ -44,13 +44,12 @@ function ramser_energy_customize_register($wp_customize){
  $sections=['header'=>['سربرگ و برند',['brand_title','brand_subtitle','phone','search_placeholder']],'hero'=>['صفحه اصلی - هدر',['hero_eyebrow','hero_title','hero_text','hero_button']],'services'=>['صفحه اصلی - خدمات',['services_title','services_subtitle','services_link','service_1','service_1_desc','service_2','service_2_desc','service_3','service_3_desc','service_4','service_4_desc','service_5','service_5_desc','service_6','service_6_desc']],'status'=>['صفحه اصلی - وضعیت برق',['status_title','status_ok','status_text','status_button']],'news'=>['صفحه اصلی - اطلاعیه‌ها',['news_title','news_more','news_1','news_2','news_3']],'stats'=>['صفحه اصلی - آمار',['stat_1','stat_1_label','stat_2','stat_2_label','stat_3','stat_3_label','stat_4','stat_4_label','stat_5','stat_5_label']],'content'=>['صفحه اصلی - اخبار و آموزش',['education_title','education_more','education_1','education_2','education_3','articles_title','articles_more','featured_title','featured_text','app_title','app_text','app_bazaar','app_google']],'footer'=>['پاورقی',['footer_about_title','footer_about','footer_services_title','footer_services','footer_access_title','footer_access','footer_contact_title','footer_contact','copyright','developer']],'pages'=>['متن صفحات داخلی',array_keys(ramser_energy_page_defaults())]];
  foreach($sections as $id=>$data){$wp_customize->add_section('re_'.$id,['title'=>$data[0],'panel'=>'re_panel']);foreach($data[1] as $key){$default=ramser_energy_defaults()[$key]??ramser_energy_page_defaults()[$key]??'';$wp_customize->add_setting('re_'.$key,['default'=>$default,'sanitize_callback'=>'sanitize_textarea_field']);$wp_customize->add_control('re_'.$key,['label'=>ramser_energy_label($key),'section'=>'re_'.$id,'type'=>'textarea']);}}
 
- /* ۹ جایگاه مستقل برای تصاویر اخبار */
- $wp_customize->add_section('re_news_images',['title'=>'اخبار و اطلاعیه‌ها - تصاویر','panel'=>'re_panel','priority'=>5,'description'=>'تصویر خبر ویژه و تصاویر ۸ خبر را از این بخش آپلود کنید.']);
- $news_images=['news_featured'=>'تصویر خبر ویژه (مهم‌ترین اطلاعیه)'];for($i=1;$i<=8;$i++)$news_images['news_'.$i]='تصویر خبر '.$i;
- foreach($news_images as $key=>$label){$wp_customize->add_setting('re_img_'.$key,['default'=>'','sanitize_callback'=>'esc_url_raw']);$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'re_img_'.$key,['label'=>$label,'section'=>'re_news_images']));}
-
- $wp_customize->add_section('re_images',['title'=>'تصاویر تمام صفحات','panel'=>'re_panel']);
- $images=['hero_image'=>'تصویر هدر صفحه اصلی','status_map'=>'تصویر وضعیت شبکه','education_1_image'=>'تصویر آموزش ۱','education_2_image'=>'تصویر آموزش ۲','education_3_image'=>'تصویر آموزش ۳','featured_image'=>'تصویر خبر اصلی','news_1_image'=>'تصویر خبر ۱','news_2_image'=>'تصویر خبر ۲','news_3_image'=>'تصویر خبر ۳','app_image'=>'تصویر اپلیکیشن','outage_image'=>'تصویر صفحه خاموشی','report_image'=>'تصویر صفحه اعلام خرابی','billpay_image'=>'تصویر صفحه پرداخت قبض','bill_image'=>'تصویر صفحه مشاهده قبض','tracking_image'=>'تصویر صفحه پیگیری','news_image'=>'تصویر صفحه اخبار','about_image'=>'تصویر صفحه درباره ما','contact_image'=>'تصویر صفحه تماس با ما'];
+ /* این همان بخشی است که در تصویر شما دیده می‌شود */
+ $wp_customize->add_section('re_images',['title'=>'تصاویر تمام صفحات','panel'=>'re_panel','priority'=>1,'description'=>'تصاویر صفحه‌ها و ۹ تصویر اختصاصی اخبار را از این بخش آپلود کنید.']);
+ $images=[
+  'hero_image'=>'تصویر هدر صفحه اصلی','status_map'=>'تصویر وضعیت شبکه','education_1_image'=>'تصویر آموزش ۱','education_2_image'=>'تصویر آموزش ۲','education_3_image'=>'تصویر آموزش ۳','featured_image'=>'تصویر خبر اصلی','news_1_image'=>'تصویر خبر ۱ صفحه اصلی','news_2_image'=>'تصویر خبر ۲ صفحه اصلی','news_3_image'=>'تصویر خبر ۳ صفحه اصلی','app_image'=>'تصویر اپلیکیشن','outage_image'=>'تصویر صفحه خاموشی','report_image'=>'تصویر صفحه اعلام خرابی','billpay_image'=>'تصویر صفحه پرداخت قبض','bill_image'=>'تصویر صفحه مشاهده قبض','tracking_image'=>'تصویر صفحه پیگیری','news_image'=>'تصویر صفحه اخبار','about_image'=>'تصویر صفحه درباره ما','contact_image'=>'تصویر صفحه تماس با ما',
+  'news_featured'=>'⭐ تصویر خبر ویژه (مهم‌ترین اطلاعیه)','news_1'=>'📰 تصویر خبر ۱','news_2'=>'📰 تصویر خبر ۲','news_3'=>'📰 تصویر خبر ۳','news_4'=>'📰 تصویر خبر ۴','news_5'=>'📰 تصویر خبر ۵','news_6'=>'📰 تصویر خبر ۶','news_7'=>'📰 تصویر خبر ۷','news_8'=>'📰 تصویر خبر ۸'
+ ];
  foreach($images as $key=>$label){$wp_customize->add_setting('re_img_'.$key,['default'=>'','sanitize_callback'=>'esc_url_raw']);$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'re_img_'.$key,['label'=>$label,'section'=>'re_images']));}
 }
 add_action('customize_register','ramser_energy_customize_register');
