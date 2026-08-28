@@ -69,7 +69,7 @@ function ramser_energy_customize_register($wp_customize) {
         }
     }
     $wp_customize->add_section('re_images',['title'=>'تصاویر تمام صفحات','panel'=>'re_panel']);
-    $images=['hero_image'=>'تصویر هدر صفحه اصلی','status_map'=>'تصویر وضعیت شبکه','education_1_image'=>'تصویر آموزش ۱','education_2_image'=>'تصویر آموزش ۲','education_3_image'=>'تصویر آموزش ۳','featured_image'=>'تصویر خبر اصلی','app_image'=>'تصویر اپلیکیشن','outage_image'=>'تصویر صفحه خاموشی','report_image'=>'تصویر صفحه اعلام خرابی','billpay_image'=>'تصویر صفحه پرداخت قبض','bill_image'=>'تصویر صفحه مشاهده قبض','tracking_image'=>'تصویر صفحه پیگیری','news_image'=>'تصویر صفحه اخبار','about_image'=>'تصویر صفحه درباره ما','contact_image'=>'تصویر صفحه تماس با ما'];
+    $images=['hero_image'=>'تصویر هدر صفحه اصلی','status_map'=>'تصویر وضعیت شبکه','education_1_image'=>'تصویر آموزش ۱','education_2_image'=>'تصویر آموزش ۲','education_3_image'=>'تصویر آموزش ۳','featured_image'=>'تصویر خبر اصلی','news_1_image'=>'تصویر خبر ۱','news_2_image'=>'تصویر خبر ۲','news_3_image'=>'تصویر خبر ۳','app_image'=>'تصویر اپلیکیشن','outage_image'=>'تصویر صفحه خاموشی','report_image'=>'تصویر صفحه اعلام خرابی','billpay_image'=>'تصویر صفحه پرداخت قبض','bill_image'=>'تصویر صفحه مشاهده قبض','tracking_image'=>'تصویر صفحه پیگیری','news_image'=>'تصویر صفحه اخبار','about_image'=>'تصویر صفحه درباره ما','contact_image'=>'تصویر صفحه تماس با ما'];
     foreach($images as $key=>$label){
         $wp_customize->add_setting('re_img_'.$key,['default'=>'','sanitize_callback'=>'esc_url_raw']);
         $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize,'re_img_'.$key,['label'=>$label,'section'=>'re_images']));
