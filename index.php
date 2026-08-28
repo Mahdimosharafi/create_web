@@ -1,13 +1,18 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-// Render the designed Customer Services UI even when /services/ is being
-// resolved as an archive instead of a WordPress Page.
 $request_path = trim((string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
-$services_path = trim((string) parse_url(home_url('/services/'), PHP_URL_PATH), '/');
-if ($request_path === $services_path && file_exists(get_template_directory() . '/page-services.php')) {
-    require get_template_directory() . '/page-services.php';
-    exit;
+$routes = [
+    'services' => 'page-services.php',
+    'outages' => 'page-outages.php',
+    'خاموشی-ها' => 'page-outages.php'
+];
+foreach ($routes as $route => $template) {
+    $route_path = trim((string) parse_url(home_url('/' . $route . '/'), PHP_URL_PATH), '/');
+    if ($request_path === $route_path && file_exists(get_template_directory() . '/' . $template)) {
+        require get_template_directory() . '/' . $template;
+        exit;
+    }
 }
 
 get_header(); ?>
