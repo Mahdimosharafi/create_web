@@ -34,29 +34,27 @@ if ($search_term !== '') {
 }
 get_header(); ?>
 <style>
-/* Empty search result is deliberately centered inside the full content area. */
-.search-results-page .page-body > .container > .search-empty,
+/* Empty search state: full-width and centered in the page content, never pushed to a side. */
 .search-results-page .search-empty {
   display:flex !important;
   flex-direction:column !important;
   align-items:center !important;
   justify-content:center !important;
   box-sizing:border-box !important;
-  width:calc(100% - 32px) !important;
-  max-width:760px !important;
-  min-height:280px !important;
-  margin-top:40px !important;
-  margin-bottom:40px !important;
-  margin-left:auto !important;
-  margin-right:auto !important;
-  position:relative !important;
-  left:50% !important;
+  width:100% !important;
+  max-width:none !important;
+  min-height:300px !important;
+  margin:40px 0 !important;
+  position:static !important;
+  left:auto !important;
   right:auto !important;
-  transform:translateX(-50%) !important;
+  transform:none !important;
   float:none !important;
+  clear:both !important;
   text-align:center !important;
 }
 .search-results-page .search-empty > * { text-align:center !important; margin-left:auto !important; margin-right:auto !important; }
+.search-results-page .search-empty-icon { margin-bottom:12px !important; }
 </style>
 <main class="inner-page search-results-page">
   <section class="page-hero"><div class="container"><h1>جستجو در سایت</h1><p><?php echo get_search_query()?esc_html('نتایج جستجو برای: '.get_search_query()):esc_html('عبارت موردنظر خود را جستجو کنید.'); ?></p></div></section>
